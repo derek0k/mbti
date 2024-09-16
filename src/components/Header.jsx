@@ -5,9 +5,9 @@ export default function Header({ handleLogout, user }) {
 
   return (
     <header>
-      <nav>
+      <nav className="flex justify-between">
         <Link to="/">홈</Link>
-        <div className="space-x-4">
+        <div>
           {user ? (
             <>
               <button onClick={handleLogout}>로그아웃</button>
