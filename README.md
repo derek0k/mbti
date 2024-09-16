@@ -6,27 +6,27 @@
 
 # 프로젝트 구조
 
-```
+```Scss
 src/
 ├── components/
-│   ├── AuthForm.jsx
-│   ├── Layout.jsx
-│   ├── ProtectedRoute.jsx
-│   ├── TestForm.jsx
-│   ├── TestResultList.jsx
-│   ├── TestResultItem.jsx
+│ ├── AuthForm.jsx
+│ ├── Layout.jsx
+│ ├── ProtectedRoute.jsx
+│ ├── TestForm.jsx
+│ ├── TestResultList.jsx
+│ ├── TestResultItem.jsx
 ├── pages/
-│   ├── Home.jsx
-│   ├── Login.jsx
-│   ├── Signup.jsx
-│   ├── Profile.jsx
-│   ├── TestPage.jsx
-│   └── TestResultPage.jsx
+│ ├── Home.jsx
+│ ├── Login.jsx
+│ ├── Signup.jsx
+│ ├── Profile.jsx
+│ ├── TestPage.jsx
+│ └── TestResultPage.jsx
 ├── api/
-│   ├── auth.js
-│   └── testResults.js
+│ ├── auth.js
+│ └── testResults.js
 ├── data/
-│   └── questions.js
+│ └── questions.js
 ├── App.css
 ├── App.jsx
 ├── index.css
@@ -39,3 +39,32 @@ index.html
 ```
 
 # 구성방법
+
+1. Tailwind CSS 설치 및 설정
+
+- Tailwind CSS 프로젝트에 설치하고 설정합니다:
+
+```Shell
+yarn add -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+- tailwind.config.js 파일을 열고 content 배열에 Tailwind가 사용할 파일 경로를 지정합니다:
+
+```js
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+- src/index.css 파일 최상단에 다음 내용을 추가합니다:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
