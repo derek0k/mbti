@@ -68,3 +68,26 @@ export default {
 @tailwind components;
 @tailwind utilities;
 ```
+
+2. JWT 인증 관련 API 연결
+
+- src/api/auth.js 파일을 생성하고, JWT 인증 서버와 통신하는 코드를 작성:
+
+```js
+import axios from "axios";
+
+const API_URL = "https://moneyfulpublicpolicy.co.kr";
+
+export const register = async (userData) => {
+  const response = await axios.post(`${API_URL}/register`, userData);
+  return response.data;
+};
+
+export const login = async (userData) => {};
+
+export const getUserProfile = async (token) => {};
+
+export const updateProfile = async (formData) => {};
+```
+
+3. 레이아웃 컴포넌트 작성
