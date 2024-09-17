@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ user, children }) {
+  console.log(user);
   if (!user) {
-    <Navigate to="/login" />;
+    return <Navigate to="/login" />;
   }
   return children;
 }
