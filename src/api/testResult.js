@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.JSON_SERVER_API_URL + "/testResults";
+const API_URL = import.meta.env.VITE_JSON_SERVER_API_URL + "/testResults";
 
 export const getTestResults = async () => {
   const response = await axios.get(API_URL);
