@@ -90,4 +90,27 @@ export const getUserProfile = async (token) => {};
 export const updateProfile = async (formData) => {};
 ```
 
-3. 레이아웃 컴포넌트 작성
+3. json-server 셋업 및 API 연결
+
+- 프로젝트 루트에 db.json 파일을 생성하고, 초기 데이터를 추가합니다:
+
+```json
+// db.json
+{
+  testResults: [];
+}
+```
+
+- json-server 설치 및 스크립트 추가
+
+```shell
+yarn add json-server --dev
+```
+
+```json
+// package.json
+"scripts" : {
+  "server" : "json-server --watch db.json --port 5000"
+}
+
+```
