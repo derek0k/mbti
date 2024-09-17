@@ -30,7 +30,10 @@ export const updateProfile = async (formData) => {
   const response = await axios.patch(
     `${import.meta.env.VITE_AUTH_API_URL}/profile`,
     formData,
-    { headers: `Bearer ${token}`, "Content-Type": "multipart/form-data" }
+    {
+      headers: { Authorization: `Bearer ${token}` },
+      "Content-Type": "multipart/form-data",
+    }
   );
   return response.data;
 };
