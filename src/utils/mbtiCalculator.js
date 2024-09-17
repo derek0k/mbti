@@ -1,6 +1,6 @@
 import { questions } from "../data/question";
 
-const calculateMBTI = (answers) => {
+export const calculateMBTI = (answers) => {
   const scores = {
     E: 0,
     I: 0,
