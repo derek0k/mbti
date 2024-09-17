@@ -7,9 +7,16 @@ const AuthForm = ({ mode, onSubmit }) => {
     nickname: "",
   });
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleSubmit = (e) => {};
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -19,17 +26,18 @@ const AuthForm = ({ mode, onSubmit }) => {
         value={formData.id}
         onChange={handleChange}
         placeholder="아이디"
+        className="w-full p-4 border border-gray-300 rounded-lg"
         required
       />
       <input
-        type="text"
+        type="password"
         name="password"
         value={formData.password}
         onChange={handleChange}
         placeholder="비밀번호"
+        className="w-full p-4 border border-gray-300 rounded-lg"
         required
       />
-      <input />
       {mode === "signup" && (
         <input
           type="text"
