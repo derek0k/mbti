@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AuthForm from "../components/AuthForm";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserProfile, login } from "../api/auth";
@@ -11,7 +11,7 @@ export default function LoginPage({ setUser }) {
       const { accessToken } = await login(formData);
       localStorage.setItem("accessToken", accessToken);
 
-      const userProfile = await getUserProfile(accessToken);
+      const userProfile = await getUserProfile();
       setUser(userProfile);
 
       navigate("/");

@@ -20,7 +20,7 @@ export const getUserProfile = async () => {
   const token = localStorage.getItem("accessToken");
   const response = await axios.get(
     `${import.meta.env.VITE_AUTH_API_URL}/user`,
-    { headers: `Bearer ${token}` }
+    { headers: { Authorization: `Bearer ${token}` } }
   );
   return response.data;
 };
