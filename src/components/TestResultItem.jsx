@@ -25,7 +25,6 @@ const mbtiDescriptions = {
 export default function TestResultItem({ result, user, onUpdate, onDelete }) {
   const isOwner = result.userId === user.id;
 
-  console.log(result);
   const formattedDate = new Date(result.date).toLocaleString();
   const description =
     mbtiDescriptions[result.result] || "MBTI 유형 설명을 찾을 수 없습니다.";
