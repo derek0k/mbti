@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { getTestResults } from "../api/testResult";
 import TestResultList from "../components/TestResultList";
+import { useUserStore } from "../store/userStore";
 
-export default function TestResultPage({ user }) {
+export default function TestResultPage() {
   const [results, setResults] = useState([]);
+
+  const { user } = useUserStore();
 
   const fetchResults = async () => {
     const data = await getTestResults();

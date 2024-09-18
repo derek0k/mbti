@@ -8,35 +8,35 @@ import TestResultPage from "../pages/TestResultPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Layout from "../components/Layout";
 
-export default function Router({ user, setUser }) {
+export default function Router() {
   return (
     <BrowserRouter>
-      <Layout user={user} setUser={setUser}>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/profile"
             element={
-              <ProtectedRoute user={user}>
-                <ProfilePage user={user} setUser={setUser} />
+              <ProtectedRoute>
+                <ProfilePage />
               </ProtectedRoute>
             }
           />
           <Route
             path="/test"
             element={
-              <ProtectedRoute user={user}>
-                <TestPage user={user} />
+              <ProtectedRoute>
+                <TestPage />
               </ProtectedRoute>
             }
           />
           <Route
             path="/results"
             element={
-              <ProtectedRoute user={user}>
-                <TestResultPage user={user} />
+              <ProtectedRoute>
+                <TestResultPage />
               </ProtectedRoute>
             }
           />

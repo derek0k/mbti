@@ -1,12 +1,9 @@
-import { useEffect } from "react";
 import Header from "./Header";
 
-const Layout = ({ children, user, setUser }) => {
-  useEffect(() => {}, []);
-
+const Layout = ({ children }) => {
   return (
     <div>
-      <Header setUser={setUser} user={user} />
+      <Header />
       <main className="container mx-auto pt-10 main">{children}</main>
     </div>
   );

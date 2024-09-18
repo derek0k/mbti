@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useUserStore } from "../store/userStore";
 
-export default function Header({ user, setUser }) {
+export default function Header() {
   const navigate = useNavigate();
+
+  const { user, setUser } = useUserStore();
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useUserStore } from "../store/userStore";
 
-export default function HomePage({ user }) {
+export default function HomePage() {
+  const { user } = useUserStore();
   return (
     <div>
       <h1>무료 성격 테스트</h1>

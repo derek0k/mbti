@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { updateProfile } from "../api/auth";
+import { useUserStore } from "../store/userStore";
 
-export default function ProfilePage({ user, setUser }) {
+export default function ProfilePage() {
   const [nickname, setNickname] = useState(user?.nickname || "");
+
+  const { user, setUser } = useUserStore();
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
