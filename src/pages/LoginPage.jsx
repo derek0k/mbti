@@ -1,12 +1,12 @@
 import React from "react";
 import AuthForm from "../components/AuthForm";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getUserProfile, login } from "../api/auth";
 import { useUserStore } from "../store/userStore";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-
+  const location = useLocation();
   const { setUser } = useUserStore();
 
   const handleLogin = async (formData) => {
@@ -17,7 +17,8 @@ export default function LoginPage() {
       const userProfile = await getUserProfile();
       setUser(userProfile);
 
-      navigate("/");
+      const redirectPath = location.state?.from?.pathname || "/";
+      navigate(redirectPath);
     } catch (error) {
       alert("로그인에 실패했습니다. 다시 시도해주세요.");
     }
