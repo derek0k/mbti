@@ -3,9 +3,9 @@ import { updateProfile } from "../api/auth";
 import { useUserStore } from "../store/userStore";
 
 export default function ProfilePage() {
-  const [nickname, setNickname] = useState(user?.nickname || "");
-
   const { user, setUser } = useUserStore();
+
+  const [nickname, setNickname] = useState(user?.nickname || "");
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
@@ -15,12 +15,13 @@ export default function ProfilePage() {
     e.preventDefault();
     try {
       const response = await updateProfile({ nickname });
-      setUser((user) => ({ ...user, nickname: response.nickname }));
+      setUser({ ...user, nickname: response.nickname });
       alert("프로필이 성공적으로 변경되었습니다");
     } catch (e) {
       alert("닉네임 변경에 실패했습니다");
     }
   };
+
   return (
     <div>
       <div>
