@@ -5,12 +5,20 @@ import { useUserStore } from "../store/userStore";
 
 export default function TestResultPage() {
   const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { user } = useUserStore();
 
   const fetchResults = async () => {
-    const data = await getTestResults();
-    setResults(data);
+    try {
+      const data = await getTestResults();
+      setResults(data);
+    } catch (err) {
+      setError();
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleUpdate = () => {
@@ -24,6 +32,10 @@ export default function TestResultPage() {
   useEffect(() => {
     fetchResults();
   }, []);
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error) return <div>에러 발생: {error}</div>;
+
   return (
     <div className="w-full flex flex-col items-center justify-center shadow-lg rounded-lg p-8">
       <div className="max-w-2xl w-full">
