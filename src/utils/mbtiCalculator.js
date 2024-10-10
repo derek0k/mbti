@@ -1,5 +1,22 @@
 import { questions } from "../data/question";
 
+const YES_ANSWER = "예";
+
+const updateScores = (scores, type, answer) => {
+  const [trait1, trait2] = type.split("/");
+  if (answer === YES_ANSWER) {
+    scores[trait1]++;
+  } else {
+    scores[trait2]++;
+  }
+};
+
+const calculateResult = (scores) => {
+  return `${scores.E >= scores.I ? "E" : "I"}${
+    scores.S >= scores.N ? "S" : "N"
+  }${scores.T >= scores.F ? "T" : "F"}${scores.J >= scores.P ? "J" : "P"}`;
+};
+
 export const calculateMBTI = (answers) => {
   const scores = {
     E: 0,
@@ -14,20 +31,10 @@ export const calculateMBTI = (answers) => {
 
   answers.forEach((answer, index) => {
     const question = questions[index];
-    if (question.type === "E/I") {
-      scores[answer === "예" ? "E" : "I"]++;
-    } else if (question.type === "S/N") {
-      scores[answer === "예" ? "S" : "N"]++;
-    } else if (question.type === "T/F") {
-      scores[answer === "예" ? "T" : "F"]++;
-    } else if (question.type === "J/P") {
-      scores[answer === "예" ? "J" : "P"]++;
-    }
+    updateScores(scores, question.type, answer);
   });
 
-  const result = `${scores.E >= scores.I ? "E" : "I"}${
-    scores.S >= scores.N ? "S" : "N"
-  }${scores.T >= scores.F ? "T" : "F"}${scores.J >= scores.P ? "J" : "P"}`;
+  const result = calculateResult(scores);
 
   return result;
 };
