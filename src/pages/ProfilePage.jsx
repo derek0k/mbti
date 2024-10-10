@@ -14,6 +14,10 @@ export default function ProfilePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (user.nickname === nickname) {
+      alert("기존 닉네임과 일치합니다");
+      return;
+    }
     if (!nickname.trim()) {
       alert("변경할 닉네임을 입력해 주세요");
       return;
