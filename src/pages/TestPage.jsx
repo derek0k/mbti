@@ -19,8 +19,13 @@ export default function TestPage() {
       date: new Date().toISOString(),
       visibility: true,
     };
-    await createTestResult(resultData);
-    navigate("/results");
+    try {
+      await createTestResult(resultData);
+      navigate("/results");
+    } catch (err) {
+      console.error("테스트 페이지에서 에러 발생: ", erorr);
+      alert("테스트 결과 제출 중 오류가 발생했습니다. 다시 시도해주세요");
+    }
   };
 
   return (
