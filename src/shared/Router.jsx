@@ -8,6 +8,14 @@ import TestResultPage from "../pages/TestResultPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Layout from "../components/Layout";
 
+const withProtectedRoute = (Component) => {
+  return (props) => (
+    <ProtectedRoute>
+      <Component {...props} />
+    </ProtectedRoute>
+  );
+};
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -16,29 +24,11 @@ export default function Router() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/test"
-            element={
-              <ProtectedRoute>
-                <TestPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/profile" element={withProtectedRoute(ProfilePage)()} />
+          <Route path="/test" element={withProtectedRoute(TestPage)()} />
           <Route
             path="/results"
-            element={
-              <ProtectedRoute>
-                <TestResultPage />
-              </ProtectedRoute>
-            }
+            element={withProtectedRoute(TestResultPage)()}
           />
         </Routes>
       </Layout>
